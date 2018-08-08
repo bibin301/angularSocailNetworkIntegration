@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Transaction</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="ART">
+    <meta name="author" content="Art MT">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="root/image/main-logo.png" rel="icon">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+ 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+    <section id="container">
+        <!--header-->
+        <header class="header fixed-top clearfix">
+            <div class="brand">
+                <a href="#" class="logo">
+                    <img src="root/image/wellness-token.png"> </a>
+                <div class="sidebar-toggle-box">
+                    <!-- <div class="fa fa-bars"></div> -->
+                </div>
+            </div>
+            <div class="top-nav clearfix">
+                <ul class="nav pull-right top-menu">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" src="root/image/user.png"> </a>
+                        <ul class="dropdown-menu extended logout">
+                            <li>
+                                <a href="javascript:void(0);" ng-click="open()">
+                                    <i class="fa fa-cog"></i> Reset Password</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" ng-click="logout()">
+                                    <i class="fa fa-key"></i> Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!--header-->
+
+        <aside>
+            <div id="sidebar" class="nav-collapse">
+                <div class="leftside-navigation">
+                    <ul class="sidebar-menu" id="nav-accordion">
+                        <li class="nav-profile logo-nav">
+                            <img src="root/image/logo-1.png"> </li>
+                        <li>
+                            <a href="admindashboard" ui-sref="admindashboard">
+                                <img src="root/image/dashboard.png">
+                                <span class="m_left">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- <a href="admin-transaction.html"> -->
+                            <a class="active" href="admintransaction" ui-sref="admintransaction">
+                              <img src="root/image/transaction.png">
+                              <span class="m_left">My Transaction</span>
+                            </a>
+                          </li>
+                        <li>
+                            <!-- <a href="admin-transaction.html"> -->
+                                    <a href="userlist" ui-sref="userlist">
+                                            <img src="root/image/user-2.png" width="30px"> 
+                                            <span class="m_left">User List</span>
+                                          </a>
+                          </li>
+                        <!-- <li>
+                            <a href="#">
+                                <img src="root/image/settings.png">
+                                <span>Support</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="root/image/aboutus.png">
+                                <span>About Us</span>
+                            </a>
+                        </li> -->
+                        <li>
+                            <a href="" ng-click="logout()">
+                                <img src="root/image/exit.png">
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="dashboard-title">
+                    <h1>Transaction</h1>
+                </div>
+                <section class="admin-content">
+                    <div class="data-menchorcoin">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <!-- Nav tabs -->
+                                <div class="card">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a data-toggle="tab" href="" ng-click="allList()">ALL</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a data-toggle="tab" href="" ng-click="sendList()">SEND</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a data-toggle="tab" href="" ng-click="receiveList()">RECEIVE</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div ng-if="all && recentTransactions.length > 0">
+                                        <div class="table-responsive">
+
+
+                                            <table class="table">
+
+                                                <thead>
+                                                    <th>From Address</th>
+                                                    <th>To Address</th>
+                                                    <th>Ether </th>
+                                                    <th>Wellness Token</th>
+                                                    <th>Coin Type</th>
+                                                    <th>Date & Time</th>
+                                                    <th>Status</th>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr ng-repeat="trans in recentTransactions | pagination : currentPage*itemsPerPage | limitTo: itemsPerPage">
+                                                        <td>{{trans.fromAddress}}</td>
+                                                        <td>{{trans.toAddress}}</td>
+                                                        <td>{{trans.etherTransferAmount}}</td>
+                                                        <td>{{trans.amount}}</td>
+                                                        <td>{{trans.coinType}}</td>
+                                                        <td>{{trans.createdDate}}</td>
+                                                        <td>{{trans.statusType}}</td>
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+
+                                            <div ng-if='all && recentTransactions.length>0'>
+
+                                                <ul class="pagination">
+                                                    <li ng-class="DisablePrevPage()">
+                                                        <a href ng-click="prevPage()">« Prev</a>
+                                                    </li>
+                                                    <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                                                        <a href="">{{n+1}}</a>
+                                                    </li>
+                                                    <li ng-class="DisableNextPage()">
+                                                        <a href ng-click="nextPage()">Next »</a>
+
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div ng-if="all && recentTransactions.length == 0">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>No Transactions Yet</tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div ng-if="send && sendTransactions.length > 0">
+                                    <div class="table-responsive">
+
+
+                                        <table class="table">
+
+                                            <thead>
+
+                                                <th>From Address</th>
+                                                <th>To Address</th>
+                                                <th>Ether </th>
+                                                <th>Wellness Token</th>
+                                                <th>Coin Type</th>
+                                                <th>Date & Time</th>
+                                                <th>Status</th>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr ng-repeat="trans in sendTransactions | pagination : currentPage*itemsPerPage | limitTo: itemsPerPage">
+
+                                                    <td>{{trans.fromAddress}}</td>
+                                                    <td>{{trans.toAddress}}</td>
+                                                    <td>{{trans.etherTransferAmount}}</td>
+                                                    <td>{{trans.amount}}</td>
+                                                    <td>{{trans.coinType}}</td>
+                                                    <td>{{trans.createdDate}}</td>
+                                                    <td>{{trans.statusType}}</td>
+
+                                                </tr>
+
+
+
+
+                                            </tbody>
+
+                                        </table>
+                                        <div ng-if='send && sendTransactions.length>0'>
+
+                                            <ul class="pagination">
+                                                <li ng-class="DisablePrevPage()">
+                                                    <a href ng-click="prevPage()">« Prev</a>
+                                                </li>
+
+                                                <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                                                    <a href="">{{n+1}}</a>
+                                                </li>
+                                                <li ng-class="DisableNextPage()">
+                                                    <a href ng-click="nextPage()">Next »</a>
+
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <div ng-if='send && sendTransactions.length == 0'>
+
+                                    <table class="table-responsive">
+                                        <thead>
+                                            <tr>No Send Transactions Yet</tr>
+                                        </thead>
+                                    </table>
+                                </div>
+
+                                <div ng-if="receive && receivedTransactions.length > 0">
+                                    <div class="table-responsive">
+
+
+                                        <table class="table">
+
+                                            <thead>
+
+                                                <th>From Address</th>
+                                                <th>To Address</th>
+                                                <th>Ether </th>
+                                                <th>Wellness Token</th>
+                                                <th>Coin Type</th>
+                                                <th>Date & Time</th>
+                                                <th>Status</th>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr ng-repeat="trans in receivedTransactions | pagination : currentPage*itemsPerPage | limitTo: itemsPerPage">
+
+                                                    <td>{{trans.fromAddress}}</td>
+                                                    <td>{{trans.toAddress}}</td>
+                                                    <td>{{trans.etherTransferAmount}}</td>
+                                                    <td>{{trans.amount}}</td>
+                                                    <td>{{trans.coinType}}</td>
+                                                    <td>{{trans.createdDate}}</td>
+                                                    <td>{{trans.statusType}}</td>
+
+                                                </tr>
+
+
+
+
+
+                                            </tbody>
+
+                                        </table>
+
+                                        <div ng-if='receive && receivedTransactions.length>0'>
+
+                                            <ul class="pagination">
+                                                <li ng-class="DisablePrevPage()">
+                                                    <a href ng-click="prevPage()">« Prev</a>
+                                                </li>
+                                                <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                                                    <a class="active" href="">{{n+1}}</a>
+                                                </li>
+                                                <li ng-class="DisableNextPage()">
+                                                    <a href ng-click="nextPage()">Next »</a>
+
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div ng-if='receive && receivedTransactions.length == 0'>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>No Received Transactions Yet</tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+
+
+
+
+                            <!-- <div class="table-responsive">
+    
+    
+                                <table class="table">
+    
+                                    <thead>
+    
+                                        <th>From Address</th>
+                                        <th>To Address</th>
+                                        <th>Transafer Amount</th>
+                                        <th>Date & Time</th>
+    
+                                    </thead>
+                                    <tbody>
+    
+                                        <tr>
+    
+                                            <td>0xc38903631217edC18d5eBfD32455E4BcF0724A73</td>
+                                            <td>0x5b10890b70211d97b3c80b31b10b7e779c13ed5e</td>
+                                            <td>0.0029 BTC</td>
+                                            <td>2017-12-15 07:21 PM</td>
+    
+                                        </tr>
+    
+                                        <tr>
+    
+                                            <td>0xc38903631217edC18d5eBfD32455E4BcF0724A22</td>
+                                            <td>0x5b10890b70211d97b3c80b31b10b7e779c13ed5e</td>
+                                            <td>0.001465 BTC</td>
+                                            <td>2017-11-18 06:21 PM</td>
+    
+                                        </tr>
+                                        <tr>
+    
+                                            <td>0xc38903631217edC18d5eBfD32455E4BcF0724505</td>
+                                            <td>0x5b10890b70211d97b3c80b31b10b7e779c13ed5e</td>
+                                            <td>0.001685 BTC</td>
+                                            <td>2017-12-15 07:21 PM</td>
+    
+                                        </tr>
+                                        <tr>
+    
+                                            <td>0xc38903631217edC18d5eBfD32455E4BcF0724313</td>
+                                            <td>0x5b10890b70211d97b3c80b31b10b7e779c13ed5e</td>
+                                            <td>0.0029 BTC</td>
+                                            <td>2017-10-15 05:21 PM</td>
+    
+                                        </tr>
+                                        <tr>
+    
+                                            <td>0xc38903631217edC18d5eBfD32455E4BcF0724A73</td>
+                                            <td>0x5b10890b70211d97b3c80b31b10b7e779c13ed5e</td>
+                                            <td>0.0029 BTC</td>
+                                            <td>2017-12-15 07:21 PM</td>
+    
+                                        </tr>
+                                        <tr>
+    
+                                            <td>0xc38903631217edC18d5eBfD32455E4BcF0724b3s</td>
+                                            <td>0x5b10890b70211d97b3c80b31b10b7e779c13ed5e</td>
+                                            <td>0.0029 BTC</td>
+                                            <td>2017-12-15 07:21 PM</td>
+    
+                                        </tr>
+                                        <tr>
+    
+                                            <td>0xc38903631217edC18d5eBfD32455E4BcF0724589</td>
+                                            <td>0x5b10890b70211d97b3c80b31b10b7e779c13ed5e</td>
+                                            <td>0.0029 BTC</td>
+                                            <td>2017-12-15 07:21 PM</td>
+    
+                                        </tr>
+                                        <tr>
+    
+                                            <td>0xc38903631217edC18d5eBfD32455E4BcF0724a75</td>
+                                            <td>0x5b10890b70211d97b3c80b31b10b7e779c13ed5e</td>
+                                            <td>0.0029 BTC</td>
+                                            <td>2017-12-15 07:21 PM</td>
+    
+                                        </tr>
+                                        
+    
+                                    </tbody>
+    
+                                </table>
+    
+                                <div class="clearfix"></div>
+                                <ul class="pagination pull-right">
+                                    <li class="disabled">
+                                        <a href="#">
+                                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">4</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">5</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+    
+                            </div> -->
+
+                        </div>
+                    </div>
+                    </div>
+
+
+                </section>
+            </section>
+        </section>
+    </section>
+    <div class="loaderBgdiv" ng-hide="myValue"><div class="loader"></div></div>
+</body>
+
+</html>

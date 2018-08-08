@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Forgot Reset - Password</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="ART">
+    <meta name="author" content="Art MT">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="root/image/main-logo.png" rel="icon">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <link rel="stylesheet" href="root/css/bootstrap.css" type="text/css">
+
+</head>
+
+<body>
+    <!---forgot password-->
+    <div class="wellness-signin">
+        <div class="wellness-signin-left">
+            <div class="welness-logo">
+                <img src="root/image/main-logo.png">
+            </div>
+
+        </div>
+        <div class="wellness-signin-right">
+            <div class="wellness-container">
+                <div class="wellness-signin-form">
+                    <h1 class="text-center">Reset Password</h1>
+                    <form name="registerForm" novalidate>
+                        <div class="form-group">
+                            <label>
+                                New Password
+                            </label>
+                            <input type="password"  minlength="8" name="password" ng-model="newpassword" ng-minlength="8" ng-pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,`~|])(?!.*\s).*$/"
+                                placeholder="new password" required>
+                            <!-- <p class="error" ng-show="registerForm.$submitted && registerForm.password.$error.required">Please enter  password .</p> -->
+                            <p class="error" ng-show='!registerForm.password.$untouched && registerForm.password.$error.minlength'>Password must be minimum of 8 characters</p>
+                            <p class="error" ng-show='!registerForm.password.$untouched && registerForm.password.$error.pattern'> password should contain 1 uppercase,1 lowercase,1 digit and 1 special character</p>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Confirm Password
+                            </label>
+                            <input type="password" name="confirmpassword" minlength="8" ng-model="confirmpassword" ng-pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,`~|])(?!.*\s).*$/"
+                                placeholder="confirm password">
+                            <p class="error" ng-show="registerForm.$submitted && registerForm.confirmpassword.$error.required">Please enter confirm password .</p>
+                            <p class="error" ng-show='!registerForm.confirmpassword.$untouched && registerForm.confirmpassword.$error.minlength'>Password must be minimum of 8 characters</p>
+                            <p class="error" ng-show='!registerForm.confirmpassword.$untouched && registerForm.confirmpassword.$error.pattern'> password should contain 1 uppercase,1 lowercase,1 digit and 1 special character</p>
+                        </div>
+                         <div class="form-group text-center">
+                            <button type="submit" class="wellness-signin-btn" ng-click="reset()">Reset</button>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="loaderBgdiv" ng-hide="myValue">
+        <div class="loader"></div>
+    </div>
+
+</body>
+
+</html>

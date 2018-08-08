@@ -1,0 +1,39 @@
+<!--Reset Password-->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
+    <script src="/root/components/controller/logoutcontroller.js"></script>
+</head>
+
+<body>
+    <!---Login-->
+
+    <div class="reset-passwd1">
+        <div class="reset-passwd-wrap1">
+            <div class="reset-logout-img">
+                <img src="root\image\tick-check.png"/>
+            </div>
+            <div class="logout-img-body">
+                <form>
+                    <div class="form-group1">
+                        <label>ARE YOU SURE WANT TO LOGOUT???</label>
+                    </div>
+
+                    <div class="form-group1 text-center">
+                        <button type="button" ng-click="closebutton()" class="reset-bttn-wl">OK</button>
+                        <button type="button" ng-click="cancelbutton()" class="reset-bttn-w2">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="loaderBgdiv" ng-hide="myValue"><div class="loader"></div></div>
+</body>
+
+</html>

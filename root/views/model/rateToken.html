@@ -1,0 +1,30 @@
+<html>
+  
+    <body>
+        <!---Login-->
+    
+        <div class="reset-passwd2">
+            <div class="reset-passwd-wrap">
+                <div class="reset-title1">
+                    <h1>Burn Unsold Tokens</h1>
+                </div>
+                <div class="reset-body-password">
+                    <form>
+                        <div class="form-group1">
+                            <!-- <label>No Of Token:</label> -->
+                            <input type="text" ng-model="rate"  onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" ng-pattern="/^[0-9]*$/" maxlength="8" minlength="1" placeholder="Enter Token Rate">
+                        </div>
+                                           
+                        <div class="form-group1 text-center">
+                            <button type="button" ng-click="tokenRate(rate)" class="reset-bttn-wl">Submit</button>
+                            <button type="button" ng-click="close()" class="reset-bttn-wl">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="loaderBgdiv" ng-hide="myValue"><div class="loader"></div></div>
+    
+    </body>
+    
+    </html>

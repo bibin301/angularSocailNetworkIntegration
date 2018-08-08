@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="ART">
+    <meta name="author" content="Art MT">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <!---Login-->
+
+
+    <div class="fa-code-section">
+        <div class="fa-code-div">
+            <div class="fa-code-content">
+                <img src="root/image/SMS-512.png" width="100px;">
+                <h1>Enter Your OTP</h1>
+                <p>Thanks for giving your details. An OTP has been sent to your Mobile Number. Please enter the  OTP
+                    below for Successful Registration
+                </p>
+                <form>
+                    <input type="password" ng-model="otpno" name="otp" placeholder="Enter your OTP number" required="">
+                </form>
+                <button type="submit" ng-click="verify(otpno)" class="btn-verfy">Verify</button>
+                <button type="button" ng-click="cancel()" class="btn-verfy">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

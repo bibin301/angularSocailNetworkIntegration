@@ -1,0 +1,63 @@
+<!--Reset Password-->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <!---Login-->
+
+    <div class="reset-passwd">
+        <div class="reset-passwd-wrap">
+            <div class="reset-title">
+                <h1>Login</h1>
+            </div>
+            <div class="reset-body-password">
+                <form name='registerform' novalidate>
+                    <div class="form-group1">
+                        <label>Emailid</label>
+                        <input type="text" name="emailId" autocomplete="new-password" autocomplete='off' placeholder="Email" ng-blur="validateEmail()"
+                            ng-model="user.emailId" ng-pattern="/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/"
+                            required/>
+                        <p class="error" ng-if="registerform.$submitted && registerform.emailId.$error.required" class="help-block">Please enter mail id.</p>
+                        <p class="error" ng-if="value && registerform.emailId.$error.pattern" class="help-block"> Enter valid mailid.</p>
+                    </div>
+
+                    <div class="form-group1">
+                        <label>Wallet Password:</label>
+                        <input type="password"  minlength="8" name="walletpassword" autocomplete="new-password" autocomplete='off' placeholder="Walletpassword"
+                            ng-minlength="8" ng-model="user.walletPassword" required/>
+                        <!-- <p class="error" ng-show='!registerForm.walletpassword.$untouched && registerForm.walletpassword.$error.minlength'>WalletPassword must be minimum of 8 characters</p> -->
+                        <p class="error" ng-show='!registerform.walletpassword.$untouched && registerform.walletpassword.$error.minlength'>Confirmpassword must be minimum of 8 characters</p>
+                        <p class="error" ng-if="registerform.$submitted && registerform.walletpassword.$error.required" class="help-block">Please enter walletpassword.</p>
+                    </div>
+                    <div class="form-group1">
+                        <label>Confirm WalletPassword:</label>
+
+                        <input type="password"  minlength="8" name="cwalletpassword" autocomplete="new-password" autocomplete='off'
+                            placeholder=" Confirm Walletpassword" ng-minlength="8" ng-model="user.conwalletPassword" required/>
+                        <!-- <p class="error" ng-show='!registerForm.walletpassword.$untouched && registerForm.walletpassword.$error.minlength'>WalletPassword must be minimum of 8 characters</p> -->
+                        <p class="error" ng-show='!registerform.cwalletpassword.$untouched && registerform.cwalletpassword.$error.minlength'>Confirmpassword must be minimum of 8 characters</p>
+                        <p class="error" ng-if="registerform.$submitted && registerform.cwalletpassword.$error.required" class="help-block">Please enter walletpassword.</p>
+                        <p class="error" ng-show='!registerForm.cwalletPassword.$untouched && registerForm.cwalletPassword.$error.pattern'>Wallet password should contain 1 uppercase,1 lowercase,1 digit and 1 special character</p>
+
+                    </div>
+                    <div class="form-group1 text-center">
+                        <button class="reset-bttn-wl" ng-click="ok(registerform.$valid,user)">OK</button>
+
+                        <button class="reset-bttn-w2" ng-click="cancel()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="loaderBgdiv" ng-hide="myValue"><div class="loader"></div></div>
+</body>
+
+</html>

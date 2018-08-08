@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="ART">
+    <meta name="author" content="Art MT">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="root/image/main-logo.png" rel="icon">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- <link rel="stylesheet" href="root/css/bootstrap.css">  -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+    <section id="container">
+        <!--header-->
+        <header class="header fixed-top clearfix">
+            <div class="brand">
+                <a href="#" class="logo">
+                    <img src="root/image/wellness-token.png"> </a>
+                <div class="sidebar-toggle-box">
+                    <!-- <div class="fa fa-bars"></div> -->
+                </div>
+            </div>
+            <div class="top-nav clearfix">
+                <ul class="nav pull-right top-menu">
+                    <li class="dropdown">
+                        
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" src="root/image/user.png"> </a>
+                            <h6 class="profile-chat">Welcome {{sessionuser}}!!! </h6>
+                        
+                           
+                        <ul class="dropdown-menu extended logout">
+                            <a href="javascript:void(0);" ng-click="open()">
+                                <i class="fa fa-cog"></i> Reset Password</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" ng-click="logout()">
+                            <i class="fa fa-key"></i> Log Out</a>
+                    </li>
+                    </ul>
+                   
+                    </li>
+                </ul>
+            </div>
+           
+        </header>
+        <!--header-->
+
+        <aside>
+            <div id="sidebar" class="nav-collapse">
+                <div class="leftside-navigation">
+                    <ul class="sidebar-menu" id="nav-accordion">
+                        <li class="nav-profile logo-nav">
+                            <img src="root/image/logo-1.png"> </li>
+                        <li>
+                            <a class="active" href="userdashboard" ui-sref="userdashboard">
+                                <img src="root/image/dashboard.png">
+                                <span class="m_left">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="usertransaction" ui-sref="usertransaction">
+                                <img src="root/image/transaction.png">
+                                <span class="m_left">My Transaction</span>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="#">
+                                <img src="root/image/settings.png">
+                                <span>Support</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="root/image/aboutus.png">
+                                <span>About Us</span>
+                            </a>
+                        </li> -->
+                        <li>
+                            <a href="" ng-click="logout()">
+                                <img src="root/image/exit.png">
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        <section id="main-content">
+            <div class="wrapper">
+                <div class="dashboard-title">
+                    <h1>User
+                        <span>Dashboard</span>
+                    </h1>
+                    <a  href="javascript:void(0);" ng-click="logoutShape()" class="catLogoBg"><img src="root/image/logo.svg" width='130px' /></a>
+                    <span class="contentCatLogo">Don't have Ethereum..? Convert your Cryptocoins hear Powered by ShapeShift.</span>
+                </div>
+                <div class="user-board-fullwrap">
+                    <div class="col-lg-12 col-sm-6 col-xs-12">
+                        <div class="referal-link" style="float:right;">
+                            <a href="referral" ui-sref="referral">Referral</a>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12  wellness-col-12">
+                        <div class="menchor-wallet-id">
+                            <h1>Wallet Address :</h1>
+                            <p>{{walletaddress}}</p>
+                            <div style=' float: right'>
+                                <p>1 WNC = {{tokenRate}}ETH</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="balance-list-box">
+                        <div class="col-md-4 col-xs-12 col-sm-4 wellness-col-4">
+                            <div class="list-box-3">
+                                <h2>Ether Balance</h2>
+                                <img src="root/image/etherum.png">
+
+                                <h4>ETH:{{etherBalance.toFixed(4)}}</h4>
+                                <h4>$:{{ethOnUsd.toFixed(4)}}</h4>
+                                
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-4 wellness-col-4">
+                            <div class="list-box-3">
+                                <h2>Token Balance</h2>
+                                <img src="root/image/user-bit-coin.png">
+                                <h4>{{tokenBalance}}</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-4 wellness-col-4">
+                            <div class="list-box-3">
+                                <h2>Referral points</h2>
+                                <img src="root/image/token-bal.png">
+                                <h4>{{referral}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="transaction-wrap">
+                        <div class="col-md-12 col-sm-12 col-xs-12 wellness-col-12">
+                            <div class="transaction-title">
+                                <h1>My
+                                    <span>transaction</span>
+                                </h1>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12 col-sm-6 wellness-col-6">
+                                    <div class="purchase-coin">
+                                        <div class="purchse-title">
+                                            <h1>Buy Tokens</h1>
+                                        </div>
+                                        <div class="purchase-body">
+                                            <div class="purchase-logo">
+                                                <img src="root/image/wellness-token.png">
+                                            </div>
+                                            <div class="purchase-div">
+                                                <button type="button" class="btn btn-art">WNC</button>
+                                                <label>No of Wellness Token</label>{{coinvalue}} WNC = {{countedvalue.toFixed(5)}}ETH
+                                                 <input type="number" ng-model="coinvalue" min=0 step=0.0001 placeholder="No of token"   ng-change='coinCount(coinvalue)' minlength="1" maxlength="10" 
+                                                 autocomplete="off" > 
+                                                 <!-- <input type="text" class="form-control" name="coinvalue" placeholder="No of token"  minlength="1" maxlength="10"  ng-model="coinvalue" onkeypress="return isNumber(event)" min=0 ng-pattern="^\d*(\.\d{0,2})?$" step="0.0001" required  autocomplete="off" /> -->
+                                               
+                                                  
+                                               
+                                                 <label>Wallet Password</label>
+                                                <input type="password" ng-model="walletpassword" minlength="8"  placeholder="Password"/>
+                                                                         
+                                            </div>
+                                            <div class="purchase-bttn">
+                                                <button type="button" ng-click="purchase()" class="btn btn-purchase-coin">Purchase Coin</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12 col-sm-6 wellness-col-6">
+                                    <div class="purchase-coin">
+                                        <div class="purchse-title dark-b">
+                                            <h1>Recent Transaction</h1>
+                                        </div>
+                                        <div class="purchase-body user-body"  ng-repeat="trans in usertranscationhistory" >
+                                            <div class="user-profile" >
+                                                <div class="user-avatar">
+                                                    <img src="root/image/user-1.png">
+                                                </div>
+                                                <div class="user-details">
+                                                    <h5>{{sessionuser}}</h5>
+                                                    <p> Received {{trans.amount}} WNCToken from {{trans.fromAddress}}</p>
+                                                    <span>{{trans.createdDate}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div ng-if=" usertranscationhistory.length == 0">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr >No Transactions Yet</tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!--Reset Password-->
+    <!-- <div class="reset-password-wrap">
+        <div class="modal fade" id="resetpwd" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Reset Password</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="reset-password">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <input type="password" value="" placeholder="Old Password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" value="" placeholder="Confirm Password">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-resent" data-dismiss="modal">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="loaderBgdiv" ng-hide="myValue"><div class="loader"></div></div>
+    <script>
+        $('#resetpwd').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: false
+        });
+        $('.reset-passwd').modal({
+            backdrop: 'static',
+            keyboard: true,
+            show: false
+        });
+  
+    </script>
+
+</body>
+
+</html>

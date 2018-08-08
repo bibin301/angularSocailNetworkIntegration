@@ -1,0 +1,56 @@
+/ Success Message  /
+.success-message {
+ position: fixed;
+ height: 100%;
+ width: 100%;
+ background: rgba(0, 0, 0, 0.6);
+ top: 0;
+ display: flex;
+}
+
+.success-wrap {
+ background: #ffffff;
+ width: 450px;
+ margin: auto;
+ text-align: center;
+}
+
+.success-header {
+ background: #3cb878;
+ padding: 20px;
+ text-align: center;
+}
+
+.success-header img {
+ display: inline-block;
+}
+
+.success-body {
+ padding: 32px 12px;
+}
+
+.success-body p {
+ font-size: 16px;
+ line-height: 26px;
+}
+
+.link-bttn {
+ margin-top: 20px;
+}
+
+.plogin-bttn {
+ background: #15273c;
+ color: #ffffff;
+ border: none;
+ outline: none;
+ display: inline-block;
+ padding: 8px 20px;
+ text-align: center;
+}
+.referal-link{margin-top:20px;}
+.referal-link a{    background: #000000;
+    color: #ffffff;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    display: block;}

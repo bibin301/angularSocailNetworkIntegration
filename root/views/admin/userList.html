@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>UserList</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="ART">
+    <meta name="author" content="Art MT">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="root/image/main-logo.png" rel="icon">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- <script src="root/components/service/pagination.js"></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+    <section id="container">
+        <!--header-->
+        <header class="header fixed-top clearfix">
+            <div class="brand">
+                <a href="#" class="logo">
+                    <img src="root/image/wellness-token.png"> </a>
+                <div class="sidebar-toggle-box">
+                    <!-- <div class="fa fa-bars"></div> -->
+                </div>
+            </div>
+            <div class="top-nav clearfix">
+                <ul class="nav pull-right top-menu">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" src="root/image/user.png"> </a>
+                        <ul class="dropdown-menu extended logout">
+                            <li>
+                                <a href="javascript:void(0);" ng-click="open()">
+                                    <i class="fa fa-cog"></i> Reset Password</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" ng-click="logout()">
+                                    <i class="fa fa-key"></i> Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!--header-->
+
+        <aside>
+            <div id="sidebar" class="nav-collapse">
+                <div class="leftside-navigation">
+                    <ul class="sidebar-menu" id="nav-accordion">
+                        <li class="nav-profile logo-nav">
+                            <img src="root/image/logo-1.png"> </li>
+                        <li>
+                            <a href="admindashboard" ui-sref="admindashboard">
+                                <img src="root/image/dashboard.png">
+                                <span class="m_left">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- <a href="admin-transaction.html"> -->
+                            <a href="admintransaction" ui-sref="admintransaction">
+                              <img src="root/image/transaction.png">
+                              <span class="m_left">My Transaction</span>
+                            </a>
+                          </li>
+                        <li>
+                            <!-- <a href="admin-transaction.html"> -->
+                                    <a href="userlist" ui-sref="userlist">
+                                            <img src="root/image/user-2.png" width="30px"> 
+                                            <span class="m_left">User List</span>
+                                          </a>
+                          </li>
+                        <!-- <li>
+                            <a href="#">
+                                <img src="root/image/settings.png">
+                                <span>Support</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="root/image/aboutus.png">
+                                <span>About Us</span>
+                            </a>
+                        </li> -->
+                        <li>
+                            <a href="" ng-click="logout()">
+                                <img src="root/image/exit.png">
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="dashboard-title">
+                    <h1>User List</h1>
+                </div>
+                <section class="admin-content">
+                    <div class="data-menchorcoin">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <!-- Nav tabs -->
+
+                                
+                                <div class="table-responsive">
+
+
+                                    <table class="table">
+
+                                        <thead>
+                                            <th>Name</th>
+                                            <th>Email ID</th>
+                                            <th>Mobile No</th>
+                                            <th>Wallet address</th>
+                                            <th>Created Date</th>
+                                            <th>Status</th>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr ng-repeat="trans in registerUser | pagination : currentPage*itemsPerPage | limitTo: itemsPerPage">
+                                                <td>{{trans.userName}}</td>
+                                                <td>{{trans.emailId}}</td>
+                                                <td>{{trans.mobileNo}}</td>
+                                                <td>{{trans.walletAddress}}</td>
+                                                <td>{{trans.createdDate}}</td>
+                                                <td>{{trans.statusUser}}</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+
+                                    <div ng-if='registerUser.length>0'>
+
+                                        <ul class="pagination">
+                                            <li ng-class="DisablePrevPage()">
+                                                <a href ng-click="prevPage()">« Prev</a>
+                                            </li>
+                                            <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                                                <a href="">{{n+1}}</a>
+                                            </li>
+                                            <li ng-class="DisableNextPage()">
+                                                <a href ng-click="nextPage()">Next »</a>
+
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div ng-if="recentTransactions.length == 0">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>No Userlist Yet</tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+
+
+                </section>
+            </section>
+        </section>
+    </section>
+    <div class="loaderBgdiv" ng-hide="myValue"><div class="loader"></div></div>
+</body>
+
+</html>

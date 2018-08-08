@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User Referral Page</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="ART">
+    <meta name="author" content="Art MT">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="root/image/main-logo.png" rel="icon">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <link rel="stylesheet" href="root/css/bootstrap.css" type="text/css">
+
+</head>
+
+<body>
+    <!---forgot password-->
+    <div class="wellness-signin">
+        <div class="wellness-signin-left">
+            <div class="welness-logo">
+                <img src="root/image/main-logo.png">
+            </div>
+            <!-- <div class="social-media">
+                <h1>Referral Scheme</h1>
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-facebook facebook-clr" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-twitter twitter-clr" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+        <div class="wellness-signin-right">
+            <div class="wellness-container">
+                <div class="wellness-signin-form">
+                    <h1 class="text-center">User Referral </h1>
+                    <form name="referralform" novalidate>
+                        <div class="form-group">
+                            <label>
+                            Reference Email
+                            </label>
+                    <input type="text" name="emailId" placeholder="Email" value="" ng-pattern="/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/"
+                    class="form-control" autofocus ng-model="referal.emailId" ng-blur="validateEmail()" autocomplete="off"
+                    required/>
+                <p class="error" ng-if="referralform.$submitted && referralform.emailId.$error.required" class="help-block">Please Enter Email Id.</p>
+                <p class="error" ng-if="value && referralform.emailId.$error.pattern" class="help-block"> Enter valid mailid.</p>
+            </div>
+        
+            <div class="form-group text-center">
+                <button type="submit" class="wellness-signin-btn" ng-click="userReferralScheme(referal.emailId)">OK</button>
+            </div>
+                <!-- <div class="form-group text-center">
+                    <button type="submit" class="wellness-signin-btn" ng-click="userReferralScheme(referal.emailId)">OK</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div> -->
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="loaderBgdiv" ng-hide="myValue"><div class="loader"></div></div>
+</body>
+
+</html>
